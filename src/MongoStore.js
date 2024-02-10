@@ -17,7 +17,7 @@ class MongoStore {
             bucketName: `whatsapp-${options.session}`
         });
         await new Promise((resolve, reject) => {
-            fs.createReadStream(`${options.session}.zip`)
+            fs.createReadStream(options.path)
                 .pipe(bucket.openUploadStream(`${options.session}.zip`))
                 .on('error', err => reject(err))
                 .on('close', () => resolve());
